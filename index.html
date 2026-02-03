@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplica | Tradutor Inteligente</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <aside class="config-panel">
+            <div class="phone-header">
+                <div class="status-indicator"></div>
+                <label for="contact-select" style="display:none;">Selecionar Contato</label>
+                <select id="contact-select" name="contact_number"
+                    style="background: transparent; border: none; color: var(--wa-accent); font-weight: bold; cursor: pointer; outline: none; width: 100%; text-align-last: center;">
+                    <option value="5519978269830">Victor (WhatsApp 1)</option>
+                    <option value="919427677680">Jit (WhatsApp 2)</option>
+                    <option value="5519993162908">Eduardo (WhatsApp 3)</option>
+                    <option value="5519999458220">Ana Beatriz (WhatsApp 4)</option>
+                    <option value="5519989609616">Leonan (WhatsApp 5)</option>
+                </select>
+            </div>
+
+            <!-- Visual confirmation of selected contact -->
+            <div id="contact-confirmation"
+                style="background: linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(37, 211, 102, 0.05)); border-left: 3px solid var(--wa-accent); padding: 12px; margin: 15px 20px; border-radius: 8px; display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-user-check" style="color: var(--wa-accent); font-size: 1.2em;"></i>
+                <div style="flex: 1;">
+                    <div style="font-size: 0.75em; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.5px;">
+                        Enviando Para:</div>
+                    <div id="selected-contact-display"
+                        style="font-weight: bold; color: var(--wa-accent); font-size: 0.95em;">Victor (WhatsApp 1) —
+                        551978269820</div>
+                </div>
+            </div>
+
+            <form id="translate-form" class="modern-form">
+                <div class="field-container">
+                    <label><i class="fas fa-comment-dots"></i> Mensagem</label>
+                    <textarea id="message" name="message" placeholder="Digite a mensagem para traduzir..."></textarea>
+                </div>
+
+                <div class="field-container">
+                    <label><i class="fas fa-microphone"></i> Anexo de Áudio</label>
+                    <div class="custom-file-upload">
+                        <input type="file" id="audio" name="audio" accept=".mp3,.mp4,.ogg">
+                        <span class="file-status">Selecionar arquivo (.mp3, .mp4)</span>
+                    </div>
+                </div>
+
+                <div class="field-container">
+                    <label><i class="fas fa-language"></i> Idioma de Destino</label>
+                    <select id="mode" name="mode">
+                        <option value="auto">Detecção Automática</option>
+                        <option value="pt-en">Português → Inglês</option>
+                        <option value="en-pt">Inglês → Português</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="btn-translate" class="main-button">
+                    <span>ENVIAR E TRADUZIR</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </aside>
+
+        <main class="chat-viewport">
+            <div class="chat-container" id="chat-box">
+            </div>
+        </main>
+    </div>
+
+    <script src="contact-display.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

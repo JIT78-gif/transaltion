@@ -1,0 +1,361 @@
+:root {
+    --wa-bg: #0b141a;           /* Fundo padrão WhatsApp Dark */
+    --wa-panel: #111b21;        /* Painéis laterais */
+    --wa-incoming: #202c33;     /* Balão cinza (recebido) */
+    --wa-outgoing: #005c4b;     /* Balão verde (enviado) */
+    --wa-accent: #00a884;       /* Verde destaque */
+    --text-primary: #e9edef;
+    --text-secondary: #8696a0;
+    --border: #222d34;
+}
+
+body {
+    background: linear-gradient(135deg, #0b141a 0%, #1a2a33 100%);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-container {
+    display: flex;
+    width: 95vw;
+    max-width: 1400px;
+    height: 90vh;
+    background: var(--wa-panel);
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+/* Painel de Configuração (Lado Esquerdo) */
+.config-panel {
+    flex: 0 0 350px;
+    background: var(--wa-panel);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.phone-header {
+    background: #202c33;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: var(--wa-accent);
+    border: 1px solid var(--border);
+}
+
+.input-group label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--wa-accent);
+    margin-bottom: 8px;
+    display: block;
+}
+
+textarea, select, .file-custom {
+    width: 100%;
+    background: #2a3942;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+    font-size: 0.9rem;   
+}
+
+textarea {
+    width: 100%;
+    background: #2a3942 !important;
+    border: 1px solid transparent !important;
+    border-radius: 8px;
+    padding: 12px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+
+    /* --- Novos Ajustes --- */
+    height: 130px;           /* Mesma altura padrão dos outros inputs */
+    max-height: 150px;      /* Limite máximo para expandir antes de usar scroll */
+    resize: vertical;       /* Bloqueia a expansão horizontal, permite apenas vertical */
+    box-sizing: border-box; /* Garante que o padding não aumente o tamanho final */
+}
+
+textarea:focus {
+    border-color: var(--wa-accent) !important;
+    box-shadow: 0 0 0 2px rgba(0, 168, 132, 0.2);
+}
+
+/* Área do Chat (Lado Direito) */
+.chat-viewport {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png'); /* Pattern do WhatsApp */
+    background-color: var(--wa-bg);
+    background-blend-mode: overlay;
+    position: relative;
+}
+
+.chat-container {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Balões Estilizados */
+.message {
+    max-width: 65%;
+    padding: 8px 12px 12px 12px;
+    position: relative;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.received {
+    align-self: flex-start;
+    background: var(--wa-incoming);
+    border-radius: 0 12px 12px 12px;
+}
+
+.mine {
+    align-self: flex-end;
+    background: var(--wa-outgoing);
+    border-radius: 12px 0 12px 12px;
+}
+
+/* Nome do remetente */
+.msg-header {
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.received .msg-header { color: #53bdeb; }
+.mine .msg-header { color: #d9fdd3; opacity: 0.8; }
+
+/* Tag de Tradução */
+.tag-translated {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.7rem;
+    background: rgba(0,0,0,0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #8696a0;
+    font-style: italic;
+}
+
+/* Botão Enviar/Traduzir */
+.btn-translate {
+    background: var(--wa-accent);
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: auto;
+    transition: all 0.2s;
+}
+
+.btn-translate:hover { transform: scale(1.02); background: #00c298; }
+
+/* ... manter as variáveis :root anteriores ... */
+
+/* Melhorias no Formulário */
+.modern-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+}
+
+.field-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.field-container label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--wa-accent);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+textarea, select {
+    background: #2a3942 !important;
+    border: 1px solid transparent !important;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+}
+
+textarea:focus, select:focus {
+    border-color: var(--wa-accent) !important;
+    box-shadow: 0 0 0 2px rgba(0, 168, 132, 0.2);
+}
+
+/* Upload de Arquivo Estilizado */
+.custom-file-upload {
+    position: relative;
+    background: #2a3942;
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.custom-file-upload input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-status {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Botão Principal Estilizado */
+.main-button {
+    background: var(--wa-accent);
+    color: white;
+    border: none;
+    padding: 18px;
+    border-radius: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.main-button:hover {
+    background: #00c298;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 168, 132, 0.4);
+}
+
+/* ==========================================
+   RESPONSIVIDADE (MOBILE - FOCO EM TELA ÚNICA)
+   ========================================== */
+@media (max-width: 900px) {
+    .app-container {
+        flex-direction: column-reverse; /* Inverte: Chat no topo, Form embaixo */
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    /* Painel de Configuração (AGORA EMBAIXO) */
+    .config-panel {
+        flex: 0 0 auto;
+        width: 100%;
+        padding: 10px 15px; /* Padding reduzido ao mínimo */
+        background: var(--wa-panel);
+        border-right: none;
+        border-top: 1px solid var(--border); /* Borda agora no topo */
+        box-sizing: border-box;
+    }
+
+    /* Esconde elementos que ocupam muito espaço no mobile */
+    .field-container label i {
+        display: none; 
+    }
+
+    .modern-form {
+        gap: 8px; /* Espaçamento mínimo entre campos */
+    }
+
+    .field-container {
+        gap: 2px;
+    }
+
+    .field-container label {
+        font-size: 0.6rem;
+        margin-left: 5px;
+    }
+
+    /* Inputs ultra compactos */
+    textarea, select, .custom-file-upload {
+        height: 38px !important; /* Altura reduzida */
+        padding: 8px !important;
+        font-size: 0.85rem !important;
+        margin-bottom: 0;
+    }
+
+    .custom-file-upload {
+        padding: 5px !important;
+    }
+
+    .file-status {
+        font-size: 0.90rem;
+    }
+
+    /* Botão Enviar mais fino */
+    .main-button {
+        padding: 10px !important;
+        font-size: 0.8rem;
+        border-radius: 8px;
+    }
+
+    /* Área do Chat (AGORA NO TOPO) */
+    .chat-viewport {
+        flex: 1;
+        min-height: 0;
+        background-attachment: scroll;
+    }
+
+    .chat-container {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .message {
+        max-width: 90%;
+        font-size: 0.85rem;
+        padding: 8px;
+    }
+
+    /* Ajuste de inputs para toque */
+    textarea, select, .main-button, .custom-file-upload {
+        min-height: 45px; /* Altura padrão Apple/Google para toque */
+        font-size: 16px !important; /* Evita o zoom automático do iOS em inputs */
+    }
+
+    .phone-header {
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+
+    .main-button {
+        padding: 12px;
+        margin-top: 5px;
+    }
+}
