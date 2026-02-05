@@ -358,4 +358,29 @@ textarea:focus, select:focus {
         padding: 12px;
         margin-top: 5px;
     }
+    
+    input[type="password"] {
+        min-height: 45px; /* Padrão de toque mobile */
+        font-size: 16px !important; /* Evita zoom no iOS */
+    }
+
+}
+
+/* Estilo condizente com o WhatsApp Dark */
+input[type="password"] {
+    width: 100%;
+    background: #2a3942 !important;
+    border: 1px solid transparent !important;
+    border-radius: 8px;
+    padding: 12px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+input[type="password"]:focus {
+    border-color: var(--wa-accent) !important;
+    box-shadow: 0 0 0 2px rgba(0, 168, 132, 0.2);
 }
