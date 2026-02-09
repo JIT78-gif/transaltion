@@ -2,7 +2,7 @@
  *CONFIGURAÇÕES GERAIS
  * Define as constantes globais do sistema.
  */
-const N8N_WEBHOOK_URL = 'https://agentes-n8n.cb16s5.easypanel.host/webhook/e0764039-04f3-42d7-97d3-2912baa7e6e2';
+const N8N_WEBHOOK_URL = 'https://agentes-n8n.cb16s5.easypanel.host/webhook/translate_WebHook';
 const formElement = document.getElementById('translate-form');
 const chatContainer = document.getElementById('chat-box');
 const fileInput = document.getElementById('audio');
@@ -129,6 +129,17 @@ async function processarFormulario(event) {
         const payloadEnvio = new FormData();
         payloadEnvio.append('numero_destino', numeroDestino);
         payloadEnvio.append('mensagem_texto', mensagemTexto);
+
+        const modoSelecionado = dadosFormulario.get('mode'); // Captura 'auto', 'pt-en' ou 'en-pt'
+
+        if (modoSelecionado === 'auto') {
+            payloadEnvio.append('idioma_atual', 'auto');
+            payloadEnvio.append('idioma_destino', 'auto');
+        } else {
+            const partesIdioma = modoSelecionado.split('-'); // Divide "pt-en" em ["pt", "en"]
+            payloadEnvio.append('idioma_atual', partesIdioma[0]);
+            payloadEnvio.append('idioma_destino', partesIdioma[1]);
+        }
 
         if (arquivoAudio && arquivoAudio.size > 0) {
             payloadEnvio.append('audio_file', arquivoAudio);
