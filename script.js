@@ -2,7 +2,7 @@
  *CONFIGURAÇÕES GERAIS
  * Define as constantes globais do sistema.
  */
-const N8N_WEBHOOK_URL = 'https://agentes-n8n.cb16s5.easypanel.host/webhook/translate_WebHook';
+const N8N_WEBHOOK_URL = 'https://agentes-n8n.cb16s5.easypanel.host/webhook-test/translate_WebHook';
 const formElement = document.getElementById('translate-form');
 const chatContainer = document.getElementById('chat-box');
 const fileInput = document.getElementById('audio');
